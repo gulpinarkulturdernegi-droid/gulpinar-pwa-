@@ -18,16 +18,13 @@ export default defineConfig({
     prefer_related_applications: false,
     shortcuts: [],
   },
-
   pwa: {
     logs: true,
   },
-
   oneSignal: {
     enabled: false,
     appId: '********-****-****-****-************',
     allowLocalhostAsSecureOrigin: true,
   },
-
   origin: 'https://gulpinarmahallesidernegi.blogspot.com',
 });
