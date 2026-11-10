@@ -1,17 +1,17 @@
+
 name: Push Generated Bucket and Deploy
 
 on:
   push:
   create:
   repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
       contents: write
       deployments: write
     env:
@@ -20,24 +20,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
       - name: Use pnpm
         uses: pnpm/action-setup@v6
+
       - name: Use Node 22.x
         uses: actions/setup-node@v6
         with:
           node-version: 22.x
           cache: pnpm
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Lint and Typecheck
         run: pnpm run check && pnpm run check:types
+
       - name: Generate Bucket and Output
         run: pnpm run generate --repository=${{ github.repository }} --branch=${{ github.head_ref || github.ref_name }}
+
       - name: Deploy to Cloudflare Workers
-        # Deploy to cloudflare workers if default branch and required secrets (CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN) exist
         if: ${{ ((github.head_ref || github.ref_name) == github.event.repository.default_branch) && (env.CLOUDFLARE_ACCOUNT_ID != '') && (env.CLOUDFLARE_API_TOKEN != '') }}
-        run: |
-          pnpm run deploy
+        run: pnpm run deploy
+
       - name: Push Generated Bucket and Output
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
@@ -60,10 +65,12 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 2
+
       - name: Install curl
         run: |
           sudo apt-get update
           sudo apt-get install -y curl
+
       - name: Send purge requests to JsDelivr for changed bucket files
         run: |
           if git rev-parse HEAD^ >/dev/null 2>&1; then
