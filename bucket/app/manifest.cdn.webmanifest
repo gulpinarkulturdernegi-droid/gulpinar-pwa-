@@ -1,15 +1,15 @@
 {
-  "name": "My Blog",
-  "short_name": "My Blog",
-  "description": "My blog description goes here...",
-  "dir": "auto",
-  "lang": "en-US",
-  "background_color": "#fff",
-  "theme_color": "#fff",
+  "name": "Gülpınar Derneği Yönetim Paneli",
+  "short_name": "Gülpınar Yönetim",
+  "description": "Gülpınar Kültür Dayanışma ve Yardımlaşma Derneği Yönetim Paneli",
+  "dir": "ltr",
+  "lang": "tr-TR",
+  "background_color": "#071a35",
+  "theme_color": "#071a35",
   "display": "standalone",
-  "orientation": "natural",
-  "scope": "https://blogger-pwa.blogspot.com/",
-  "start_url": "https://blogger-pwa.blogspot.com/?utm_source=homescreen",
+  "orientation": "portrait",
+  "scope": "https://gulpinarmahallesidernegi.blogspot.com/",
+  "start_url": "https://gulpinarmahallesidernegi.blogspot.com/?utm_source=homescreen",
   "id": "/",
   "prefer_related_applications": false,
   "icons": [
@@ -111,32 +111,6 @@
       "type": "image/png",
       "sizes": "720x540",
       "form_factor": "wide"
-    }
-  ],
-  "shortcuts": [
-    {
-      "icons": [
-        {
-          "src": "icons/android-chrome-96x96.png",
-          "sizes": "96x96"
-        }
-      ],
-      "name": "Shortcut 1",
-      "short_name": "Shortcut 1",
-      "description": "Shortcut 1 description goes here...",
-      "url": "https://blogger-pwa.blogspot.com/search/label/shortcut-1?utm_source=homescreen"
-    },
-    {
-      "icons": [
-        {
-          "src": "icons/android-chrome-96x96.png",
-          "sizes": "96x96"
-        }
-      ],
-      "name": "Shortcut 2",
-      "short_name": "Shortcut 2",
-      "description": "Shortcut 2 description goes here...",
-      "url": "https://blogger-pwa.blogspot.com/search/label/shortcut-2?utm_source=homescreen"
     }
   ]
 }
